@@ -1,3 +1,8 @@
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System.Text;
+using System.Text.Json;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
@@ -28,6 +33,27 @@ app.MapGet("/weatherforecast", () =>
         ))
         .ToArray();
     return forecast;
+});
+
+app.MapGet("/send", (IConnection connection) =>
+{
+    using var channel = connection.CreateModel();
+    channel.QueueDeclare("books");
+
+    var json = JsonSerializer.Serialize(new { Book = "Bible" });
+    var body = Encoding.UTF8.GetBytes(json);
+
+    channel.BasicPublish(exchange: "", routingKey: "books", body: body);
+
+    var consumer = new EventingBasicConsumer(channel);
+    consumer.Received += (model, eventArgs) =>
+    {
+        var body = eventArgs.Body.ToArray();
+        var message = Encoding.UTF8.GetString(body);
+        Console.WriteLine(message);
+    };
+
+    return "Message sent to the Message Queue";
 });
 
 app.MapDefaultEndpoints();
