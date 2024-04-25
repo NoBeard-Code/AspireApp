@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
-builder.AddRabbitMQ("rabbit");
+builder.AddRabbitMQClient("rabbit");
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
