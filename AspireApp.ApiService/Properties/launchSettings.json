@@ -6,7 +6,17 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
-      "applicationUrl": "http://localhost:5477",
+      "applicationUrl": "http://localhost:5394",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "weatherforecast",
+      "applicationUrl": "https://localhost:7587;http://localhost:5394",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

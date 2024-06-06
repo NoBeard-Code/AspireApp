@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>7cd08673-b72e-4745-8a99-771c0712a322</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.4.24156.9" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="8.0.0" />
   </ItemGroup>
 
 </Project>
